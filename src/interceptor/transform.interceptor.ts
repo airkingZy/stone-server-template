@@ -16,6 +16,8 @@ export class TransformInterceptor<T>
     context: ExecutionContext,
     next: CallHandler<T>,
   ): Observable<Response<T>> {
+    const response = context.switchToHttp().getResponse();
+    response.header('fsfsfs', 'ppppp');
     return next.handle().pipe(
       map(data => {
         return {
